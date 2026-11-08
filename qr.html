@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f3e9">
+  <title>שלט QR להדפסה | BARBER ARCADE</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:#e5e6e9;color:#191f2d;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+    .wrap{max-width:565px;margin:28px auto;padding:0 15px}
+    .poster{background:#fffdf8;border:9px solid #202b3c;border-radius:20px;text-align:center;padding:24px 20px 31px;box-shadow:0 19px 50px #0002}
+    .stripe{height:9px;border-radius:10px;background:repeating-linear-gradient(120deg,#bc3948 0 16px,#fff 16px 32px,#245e96 32px 48px,#fff 48px 64px)}
+    .tag{font-size:14px;font-weight:950;letter-spacing:2px;margin:28px 0 12px;direction:ltr}
+    h1{font-size:clamp(37px,9vw,56px);line-height:1.05;letter-spacing:-1.4px;margin:0 0 11px}
+    h1 span{color:#c53c4a}
+    .lead{font-size:21px;font-weight:800;line-height:1.5;margin:9px 0 11px}
+    .qrbox{width:min(70vw,316px);height:min(70vw,316px);background:white;border:5px solid #202b3c;border-radius:14px;display:grid;place-items:center;margin:20px auto;padding:10px}
+    .qrbox img{width:100%;height:100%;object-fit:contain;image-rendering:pixelated}
+    .game-list{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:13px 0 15px}
+    .game-list span{background:#202b3c;color:white;border-radius:99px;padding:9px 13px;font-weight:800;font-size:13px}
+    .actionline{font-weight:1000;font-size:24px;margin:17px 0}
+    .small{direction:ltr;overflow-wrap:anywhere;font-size:12px;color:#485261}
+    .footer{font-size:15px;font-weight:850;margin:17px 0 0}
+    .actions{text-align:center;padding:19px}
+    .actions button,.actions a{font:inherit;display:inline-block;border:0;text-decoration:none;border-radius:12px;background:#bd3a4a;color:white;padding:12px 18px;cursor:pointer;font-weight:900;margin:4px}
+    .actions a{background:#243144}
+    .actions small{display:block;color:#606879;font-size:12px;margin-top:9px}
+    @media print {
+      @page { size: A4 portrait; margin: 12mm; }
+      body{background:white;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+      .wrap{max-width:160mm;margin:0 auto;padding:0}
+      .poster{box-shadow:none;border-radius:10px}
+      .actions{display:none}
+      .qrbox{width:80mm;height:80mm}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="poster">
+      <div class="stripe"></div>
+      <p class="tag">✂ BARBER ARCADE ✂</p>
+      <h1>משעמם <span>בהמתנה?</span></h1>
+      <p class="lead">אבי וקוקו מזמינים אתכם<br>למתחם המשחקים של המספרה!</p>
+      <div class="qrbox"><img src="assets/portal-qr.png" alt="קוד QR לסריקה — מתחם המשחקים של המספרה" width="360" height="360"></div>
+      <div class="game-list"><span>✊ קרב המספריים</span><span>🏃 מרוץ המספרה</span></div>
+      <p class="actionline">סרקו, בחרו משחק ותתחילו! 📱</p>
+      <p class="small">shalevg12.github.io/barberPortal/</p>
+      <p class="footer">העיקר הבריאות והתסרוקת 💈</p>
+      <div class="stripe" style="margin-top:23px"></div>
+    </main>
+    <div class="actions">
+      <button type="button" onclick="window.print()">🖨️ הדפסת השלט</button>
+      <a href="./">חזרה למשחקים</a>
+      <small>זה ה-QR היחיד שצריך להדפיס. גם כשנוסיף משחקים, הוא לא ישתנה.</small>
+    </div>
+  </div>
+</body>
+</html>
