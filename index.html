@@ -68,6 +68,7 @@
     .cover { position: relative; overflow: hidden; height: 228px; isolation: isolate; }
     .game-card--battle .cover { background: radial-gradient(ellipse at 75% 10%, #e96f63, transparent 55%), linear-gradient(120deg, #552231, #9e3847 50%, #2a2539); }
     .game-card--run .cover { background: radial-gradient(ellipse at 65% -10%, #48b9de, transparent 54%), linear-gradient(120deg, #0f344f, #236482 54%, #202945); }
+    .game-card--flappy .cover { background: radial-gradient(ellipse at 45% 5%, #93e4b2, transparent 56%), linear-gradient(125deg, #164850, #315c5e 53%, #202c46); }
     .cover::after { content: ""; position: absolute; inset: 30% 0 0; pointer-events: none; z-index: 3; background: linear-gradient(transparent, #111520a8); }
     .cover::before { content: ""; position: absolute; inset: 0; opacity: .16; z-index: 0; background: repeating-linear-gradient(125deg, transparent 0 25px, #fff3 26px 28px, transparent 29px 58px); }
     .cover-label { position: absolute; z-index: 5; top: 15px; right: 16px; font-size: 10px; font-weight: 950; color: #fff5dd;
@@ -173,7 +174,7 @@
       document.getElementById("game-count").textContent = games.length + " משחקים";
       games.forEach(function (game) {
         var card = document.createElement("a");
-        card.className = "game-card game-card--" + (game.theme === "run" ? "run" : "battle");
+        card.className = "game-card game-card--" + (["battle", "run", "flappy"].includes(game.theme) ? game.theme : "battle");
         card.href = game.url;
         card.setAttribute("aria-label", "שחקו עכשיו: " + game.name);
         card.innerHTML = '<div class="cover"><span class="cover-label"></span><img class="cover-photo cover-photo--avi" src="assets/avi-portrait.webp" alt="" loading="lazy"><img class="cover-photo cover-photo--koko" src="assets/koko-portrait.webp" alt="" loading="lazy"><span class="cover-symbol" aria-hidden="true"></span></div><div class="game-body"><div class="game-kicker"></div><h3 class="game-title"></h3><p class="game-desc"></p><div class="game-bottom"><span class="game-kind"></span><span class="play-btn">יאללה לשחק <span aria-hidden="true">←</span></span></div></div>';
