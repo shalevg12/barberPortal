@@ -3,191 +3,94 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0b0e16">
-  <meta name="description" content="BARBER ARCADE — כל המשחקים של המספרה של אבי וקוקו במקום אחד. בוחרים משחק ומתחילים ליהנות!">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="BARBER ARCADE | המשחקים של אבי וקוקו">
-  <meta property="og:description" content="אבן נייר ומספריים, מרוץ המספרה ועוד משחקים. סורקים, בוחרים ומשחקים!">
-  <meta property="og:url" content="https://shalevg12.github.io/barberPortal/">
-  <title>BARBER ARCADE | אבי × קוקו</title>
+  <meta name="theme-color" content="#0b0b0d">
+  <meta name="description" content="כל המשחקים של אבי וקוקו במקום אחד — בוחרים משחק ומתחילים!">
+  <meta property="og:title" content="משחקי המספרה | אבי וקוקו">
+  <meta property="og:description" content="ציפור מספרה, אבן נייר ומספריים וטמפל מספרה. שלושה משחקים, QR אחד.">
+  <title>משחקי המספרה | אבי וקוקו</title>
   <style>
-    :root {
-      --bg: #0b0e16; --panel: #151925; --ink: #fff8ed; --muted: #b6b7c3;
-      --gold: #f7cf85; --line: rgba(255,255,255,.12);
-      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-      color-scheme: dark;
-    }
+    :root { color-scheme: dark; font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif; }
     * { box-sizing: border-box; }
-    html { background: var(--bg); scroll-behavior: smooth; }
-    body { margin: 0; color: var(--ink); overflow-x: hidden; -webkit-tap-highlight-color: transparent;
-      background: radial-gradient(ellipse 550px 400px at 100% 0%, #502c3d70, transparent 73%),
-                  radial-gradient(ellipse 500px 380px at -20% 22%, #21446b55, transparent 72%), var(--bg); }
-    a { color: inherit; }
-    button { font: inherit; }
-    a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
-    .shell { max-width: 940px; margin: auto; padding: 0 18px calc(36px + env(safe-area-inset-bottom)); }
-    .topbar { height: 78px; display: flex; justify-content: space-between; align-items: center; gap: 12px; border-bottom: 1px solid var(--line); }
-    .brand { display: flex; align-items: center; text-decoration: none; gap: 12px; min-width: 0; }
-    .pole { display: block; width: 40px; height: 43px; border: 3px solid #f6e8c7; border-radius: 11px; flex: none;
-      background: repeating-linear-gradient(135deg, #fcf5e1 0 9px, #cf4250 9px 18px, #fcf5e1 18px 27px, #4977b7 27px 36px);
-      box-shadow: 0 6px 20px #e2b66a29, inset 0 0 0 2px #0b0e16aa; transform: rotate(-8deg); }
-    .brand strong { display: block; line-height: 1; font-size: 18px; font-weight: 950; letter-spacing: .5px; direction: ltr; text-align: right; }
-    .brand small { display: block; margin-top: 5px; color: var(--gold); font-size: 11px; font-weight: 800; }
-    .navlink { text-decoration: none; border: 1px solid #ffffff29; background: #ffffff0b; font-size: 12px; border-radius: 100px; padding: 10px 13px; font-weight: 800; white-space: nowrap; }
-    .navlink:hover { background: #ffffff1b; }
-    .hero { position: relative; margin-top: 18px; padding: 27px 20px 23px; border-radius: 28px; overflow: hidden;
-      border: 1px solid #f6d49f23; background: linear-gradient(145deg, #252238, #191c2c 52%, #171923); isolation: isolate;
-      box-shadow: 0 20px 65px #0004; }
-    .hero::before { content: ""; position: absolute; inset: -50% -25% auto; height: 330px; z-index: -1;
-      background: radial-gradient(ellipse, #b53f4788, transparent 65%); filter: blur(17px); }
-    .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .16; pointer-events: none;
-      background: repeating-linear-gradient(135deg, transparent 0 48px, #fff2 48px 49px, transparent 49px 96px); }
-    .eyebrow { display: inline-flex; align-items: center; gap: 7px; padding: 6px 11px; border-radius: 99px;
-      color: #ffe2a9; background: #eab65a1d; border: 1px solid #eabb723a; font-size: 11px; font-weight: 900; letter-spacing: .1px; }
-    h1 { max-width: 510px; margin: 15px 0 10px; line-height: 1.08; font-size: clamp(34px, 7.5vw, 65px); letter-spacing: -1.8px; font-weight: 1000; }
-    h1 em { font-style: normal; display: block; color: var(--gold); text-shadow: 0 5px 30px #e6b36326; }
-    .hero-desc { max-width: 350px; color: #e0d9d7; font-size: 14px; line-height: 1.65; margin: 0; }
-    .hero-duo { display: flex; align-items: center; justify-content: flex-start; direction: ltr; margin: 21px 0 17px; padding-left: 4px; }
-    .avatar { width: 84px; height: 84px; flex: none; object-fit: cover; object-position: center; border-radius: 50%;
-      border: 4px solid #f4c983; background: #2c3244; box-shadow: 0 5px 18px #0007; }
-    .avatar + .avatar { margin-left: -13px; border-color: #80b9ec; }
-    .avatar-caption { text-align: right; margin-left: 15px; direction: rtl; line-height: 1.35; }
-    .avatar-caption strong { display: block; font-size: 18px; }
-    .avatar-caption small { display: block; color: #ead7be; font-size: 11px; font-weight: 700; }
-    .hero-pills { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .hero-pills span { font-size: 11px; font-weight: 800; padding: 7px 10px; background: #ffffff13; border: 1px solid #ffffff1b; border-radius: 100px; }
-    .section-head { margin: 30px 2px 17px; display: flex; align-items: end; justify-content: space-between; gap: 12px; }
-    .section-overline { color: #e4ba75; display: block; font-size: 11px; font-weight: 900; letter-spacing: 1px; margin-bottom: 4px; direction: ltr; text-align: right; }
-    h2 { font-size: clamp(26px, 5.8vw, 35px); line-height: 1.1; margin: 0; font-weight: 1000; letter-spacing: -.9px; }
-    .game-count { padding: 7px 11px; border: 1px solid var(--line); border-radius: 99px; color: #ded5cc; font-size: 11px; font-weight: 850; white-space: nowrap; }
-    .games { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
-    .game-card { display: block; border-radius: 23px; overflow: hidden; background: #1a1e2b; text-decoration: none;
-      border: 1px solid #ffffff21; box-shadow: 0 15px 38px #0003; transition: transform .2s, border-color .2s, box-shadow .2s; }
-    .game-card:hover { transform: translateY(-4px); border-color: #f4cf89a8; box-shadow: 0 20px 45px #0006; }
-    .game-card:active { transform: scale(.987); }
-    .cover { position: relative; overflow: hidden; height: 228px; isolation: isolate; }
-    .game-card--battle .cover { background: radial-gradient(ellipse at 75% 10%, #e96f63, transparent 55%), linear-gradient(120deg, #552231, #9e3847 50%, #2a2539); }
-    .game-card--run .cover { background: radial-gradient(ellipse at 65% -10%, #48b9de, transparent 54%), linear-gradient(120deg, #0f344f, #236482 54%, #202945); }
-    .game-card--flappy .cover { background: radial-gradient(ellipse at 45% 5%, #93e4b2, transparent 56%), linear-gradient(125deg, #164850, #315c5e 53%, #202c46); }
-    .cover::after { content: ""; position: absolute; inset: 30% 0 0; pointer-events: none; z-index: 3; background: linear-gradient(transparent, #111520a8); }
-    .cover::before { content: ""; position: absolute; inset: 0; opacity: .16; z-index: 0; background: repeating-linear-gradient(125deg, transparent 0 25px, #fff3 26px 28px, transparent 29px 58px); }
-    .cover-label { position: absolute; z-index: 5; top: 15px; right: 16px; font-size: 10px; font-weight: 950; color: #fff5dd;
-      border: 1px solid #ffffff42; background: #090e1d70; padding: 7px 11px; border-radius: 100px; backdrop-filter: blur(8px); }
-    .cover-photo { position: absolute; bottom: -9px; height: 95%; max-width: 57%; object-fit: contain; object-position: bottom; z-index: 2; filter: drop-shadow(0 12px 15px #0008); }
-    .cover-photo--avi { right: -6%; transform: rotate(-6deg); }
-    .cover-photo--koko { left: -7%; transform: rotate(6deg) scaleX(-1); }
-    .game-card--run .cover-photo--avi { right: -12%; }
-    .game-card--run .cover-photo--koko { left: -11%; }
-    .cover-symbol { position: absolute; left: 50%; top: 54%; transform: translate(-50%, -50%) rotate(-9deg); z-index: 4;
-      text-align: center; padding: 11px 14px; border: 2px solid #ffffffa9; background: #171826b5; box-shadow: 0 12px 25px #0006;
-      border-radius: 19px; font-size: 26px; white-space: nowrap; }
-    .game-card--run .cover-symbol { font-size: 37px; }
-    .game-body { padding: 18px 19px 18px; }
-    .game-kicker { font-size: 10px; font-weight: 950; letter-spacing: 1.5px; color: #f0bd75; direction: ltr; text-align: right; }
-    .game-title { font-size: 25px; margin: 6px 0 7px; line-height: 1.15; font-weight: 1000; }
-    .game-desc { font-size: 13px; line-height: 1.55; color: #c5c4d0; min-height: 41px; margin: 0; }
-    .game-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 18px; }
-    .game-kind { color: #c1b7b7; font-size: 11px; font-weight: 850; }
-    .play-btn { padding: 10px 16px; border-radius: 12px; font-size: 14px; font-weight: 950; background: #ffdf9c; color: #25202b; box-shadow: 0 6px 18px #eec57a25; }
-    .play-btn span { font-size: 16px; margin-right: 3px; }
-    .game-card--run .play-btn { background: #88daf5; }
-    .below { margin-top: 19px; padding: 17px 17px; border: 1px dashed #f3d3a943; background: #f3cd8a09;
-      border-radius: 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-    .below strong { font-size: 14px; }
-    .below p { margin: 4px 0 0; color: #aaa9b4; font-size: 12px; line-height: 1.5; }
-    .below-icon { font-size: 30px; filter: grayscale(.25); }
-    footer { padding: 29px 2px 12px; text-align: center; }
-    footer p { margin: 0 0 12px; font-weight: 850; color: var(--gold); font-size: 14px; }
-    footer a { color: #c6c2cb; font-size: 12px; text-decoration-color: #8a8894; text-underline-offset: 4px; }
-    footer small { display: block; color: #767984; font-size: 10px; margin-top: 15px; }
-    @media (max-width: 620px) {
-      .shell { padding-inline: 14px; }
-      .hero { margin-top: 12px; padding: 24px 18px 21px; }
-      .games { grid-template-columns: 1fr; gap: 15px; }
-      .cover { height: min(50vw, 195px); min-height: 167px; }
-      .game-body { padding: 16px; }
-      .game-title { font-size: 23px; }
-      .game-desc { min-height: 0; }
-      .hero-duo { margin-top: 17px; }
-      .section-head { margin-top: 27px; }
+    html { background: #0b0b0d; }
+    body { margin: 0; min-height: 100vh; min-height: 100dvh; background: #0b0b0d; color: #fff; }
+    .page {
+      width: min(440px, calc(100% - 36px));
+      min-height: 100vh; min-height: 100dvh;
+      margin: auto;
+      padding: calc(20px + env(safe-area-inset-top)) 0 calc(19px + env(safe-area-inset-bottom));
+      display: flex; flex-direction: column;
     }
-    @media (min-width: 760px) {
-      .hero { min-height: 300px; padding: 35px 36px; }
-      .hero-duo { position: absolute; bottom: 70px; left: 35px; margin: 0; }
-      .avatar { width: 115px; height: 115px; }
-      .hero-desc { max-width: 425px; }
-      .hero-pills { margin-top: 23px; }
+    .header { display: flex; align-items: center; justify-content: center; gap: 15px; padding-bottom: 22px; border-bottom: 1px solid #333438; }
+    .faces { display: flex; align-items: center; flex: none; padding-left: 12px; }
+    .faces img { width: 53px; height: 53px; object-fit: cover; border-radius: 50%; border: 2px solid #fff; background: #20202a; }
+    .faces img + img { margin-right: -13px; }
+    .heading { min-width: 0; }
+    h1 { font-size: clamp(23px, 6vw, 29px); font-weight: 850; line-height: 1.12; margin: 0; letter-spacing: -.6px; }
+    .heading p { margin: 5px 0 0; color: #b9b9c0; font-size: 13px; }
+    main { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 16px; padding: 30px 0; }
+    .game-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; min-height: 68px; padding: 12px 18px;
+      border-radius: 17px; border: 1px solid #f7f7f7;
+      background: #fafafa; color: #111113;
+      text-decoration: none; text-align: center;
+      font-size: clamp(19px, 5.5vw, 24px); line-height: 1.2; font-weight: 850;
+      transition: transform .12s ease, background .12s ease;
+      -webkit-tap-highlight-color: transparent;
     }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .game-card { transition: none; }
-    }
+    .game-link:active { transform: scale(.985); background: #e7e7e7; }
+    .game-link:focus-visible { outline: 3px solid #e6bd73; outline-offset: 4px; }
+    footer { text-align: center; color: #aaaab0; font-size: 13px; font-weight: 600; padding-top: 8px; }
+    @media (max-height: 600px) { .page { padding-top: 12px; padding-bottom: 12px; } .header { padding-bottom: 12px; } .faces img { width: 43px; height: 43px; } main { padding: 14px 0; gap: 11px; } .game-link { min-height: 58px; } }
+    @media (prefers-reduced-motion: reduce) { .game-link { transition: none; } }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <header class="topbar">
-      <a class="brand" href="./" aria-label="BARBER ARCADE — דף הבית">
-        <span class="pole" aria-hidden="true"></span>
-        <span><strong>BARBER ARCADE</strong><small>המספרה של אבי וקוקו</small></span>
-      </a>
-      <a class="navlink" href="#games">🎮 כל המשחקים</a>
+  <div class="page">
+    <header class="header">
+      <div class="faces" aria-hidden="true">
+        <img src="assets/avi-face.webp" alt="" width="53" height="53">
+        <img src="assets/koko-face.webp" alt="" width="53" height="53">
+      </div>
+      <div class="heading">
+        <h1>משחקי המספרה</h1>
+        <p>אבי וקוקו · בוחרים ומשחקים</p>
+      </div>
     </header>
-    <main>
-      <section class="hero" aria-labelledby="main-title">
-        <span class="eyebrow">✂️ ברוכים הבאים למתחם המשחקים</span>
-        <h1 id="main-title">סורקים. בוחרים.<em>משחקים!</em></h1>
-        <p class="hero-desc">באנו להסתפר, נשארנו להתחרות. כל המשחקים של אבי וקוקו מחכים לכם כאן — ישירות מהנייד.</p>
-        <div class="hero-duo">
-          <img class="avatar" src="assets/avi-face.webp" alt="אבי" width="84" height="84">
-          <img class="avatar" src="assets/koko-face.webp" alt="קוקו" width="84" height="84">
-          <span class="avatar-caption"><strong>אבי × קוקו</strong><small>מי ייקח את הניצחון?</small></span>
-        </div>
-        <div class="hero-pills" aria-label="פרטי המתחם">
-          <span>⚡ משחקים מיד</span><span>📱 בלי להוריד אפליקציה</span><span>🆓 בחינם</span>
-        </div>
-      </section>
-      <section id="games" aria-labelledby="games-title">
-        <div class="section-head">
-          <div><span class="section-overline">CHOOSE YOUR GAME</span><h2 id="games-title">בחרו את המשחק שלכם</h2></div>
-          <span class="game-count" id="game-count"></span>
-        </div>
-        <div id="game-grid" class="games"></div>
-      </section>
-      <aside class="below" aria-label="עוד משחקים בעתיד">
-        <div><strong>וזאת רק ההתחלה… 👀</strong><p>משחקים חדשים יתווספו כאן. אותו QR, עוד הרבה צחוקים.</p></div>
-        <span class="below-icon" aria-hidden="true">🕹️</span>
-      </aside>
+    <main id="games" aria-label="בחירת משחק">
+      <a class="game-link" href="https://shalevg12.github.io/flappyBarber/">ציפור מספרה</a>
+      <a class="game-link" href="https://shalevg12.github.io/barber-battle/">אבן נייר ומספריים</a>
+      <a class="game-link" href="https://shalevg12.github.io/templeRunMaspera/">טמפל מספרה</a>
     </main>
-    <footer>
-      <p>העיקר הבריאות והתסרוקת ✂️</p>
-      <a href="qr.html">שלט QR להדפסה במספרה</a>
-      <small>BARBER ARCADE · אבי וקוקו · כל המשחקים במקום אחד</small>
-    </footer>
+    <footer>העיקר הבריאות והתסרוקת 💈</footer>
   </div>
   <script src="games.js"></script>
   <script>
-    (function () {
-      "use strict";
-      var grid = document.getElementById("game-grid");
-      var games = Array.isArray(window.BARBER_GAMES) ? window.BARBER_GAMES : [];
-      document.getElementById("game-count").textContent = games.length + " משחקים";
-      games.forEach(function (game) {
-        var card = document.createElement("a");
-        card.className = "game-card game-card--" + (["battle", "run", "flappy"].includes(game.theme) ? game.theme : "battle");
-        card.href = game.url;
-        card.setAttribute("aria-label", "שחקו עכשיו: " + game.name);
-        card.innerHTML = '<div class="cover"><span class="cover-label"></span><img class="cover-photo cover-photo--avi" src="assets/avi-portrait.webp" alt="" loading="lazy"><img class="cover-photo cover-photo--koko" src="assets/koko-portrait.webp" alt="" loading="lazy"><span class="cover-symbol" aria-hidden="true"></span></div><div class="game-body"><div class="game-kicker"></div><h3 class="game-title"></h3><p class="game-desc"></p><div class="game-bottom"><span class="game-kind"></span><span class="play-btn">יאללה לשחק <span aria-hidden="true">←</span></span></div></div>';
-        card.querySelector(".cover-label").textContent = game.label;
-        card.querySelector(".cover-symbol").textContent = game.symbol;
-        card.querySelector(".game-kicker").textContent = game.englishName;
-        card.querySelector(".game-title").textContent = game.name;
-        card.querySelector(".game-desc").textContent = game.description;
-        card.querySelector(".game-kind").textContent = game.category;
-        grid.appendChild(card);
+    (() => {
+      const games = window.BARBER_GAMES;
+      if (!Array.isArray(games) || !games.length) return;
+      const names = {
+        "flappy-barber": "ציפור מספרה",
+        "barber-battle": "אבן נייר ומספריים",
+        "temple-run-maspera": "טמפל מספרה"
+      };
+      const order = ["flappy-barber", "barber-battle", "temple-run-maspera"];
+      const ordered = [...games].sort((a, b) => {
+        const aIndex = order.indexOf(a.id);
+        const bIndex = order.indexOf(b.id);
+        return (aIndex < 0 ? order.length : aIndex) - (bIndex < 0 ? order.length : bIndex);
       });
-      if (!games.length) grid.textContent = "המשחקים בדרך — נתראה בקרוב!";
-    }());
+      const links = ordered
+        .filter(game => typeof game.url === "string" && /^https:\/\//.test(game.url))
+        .map(game => {
+          const link = document.createElement("a");
+          link.className = "game-link";
+          link.href = game.url;
+          link.textContent = names[game.id] || game.name || "משחק";
+          return link;
+        });
+      if (links.length) document.getElementById("games").replaceChildren(...links);
+    })();
   </script>
 </body>
 </html>
