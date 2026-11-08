@@ -1,0 +1,37 @@
+name: Generate branded social preview
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/build_social_preview.py"
+      - ".github/workflows/generate-social-preview.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render-social-card:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Pillow
+        run: python -m pip install Pillow
+      - name: Generate image from original game character assets
+        run: python scripts/build_social_preview.py
+      - name: Publish generated image
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/masperet-gabay-preview-v2.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m "Render official Masperet Gabay social preview"
+            git push
+          fi
