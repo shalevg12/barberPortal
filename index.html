@@ -3,82 +3,204 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0b0b0d">
-  <meta name="description" content="כל המשחקים של אבי וקוקו במקום אחד — בוחרים משחק ומתחילים!">
+  <meta name="theme-color" content="#e6f8ff">
+  <meta name="description" content="משחקי המספרה של אבי וקוקו – בוחרים משחק ומתחילים!">
   <meta property="og:title" content="משחקי המספרה | אבי וקוקו">
   <meta property="og:description" content="ציפור מספרה, אבן נייר ומספריים וטמפל מספרה. שלושה משחקים, QR אחד.">
   <title>משחקי המספרה | אבי וקוקו</title>
   <style>
-    :root { color-scheme: dark; font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif; }
+    :root {
+      color-scheme: light;
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      --ink: #26364e;
+      --muted: #63798a;
+      --sky: #e6f8ff;
+      --outline: #294663;
+    }
     * { box-sizing: border-box; }
-    html { background: #0b0b0d; }
-    body { margin: 0; min-height: 100vh; min-height: 100dvh; background: #0b0b0d; color: #fff; }
+    html { background: var(--sky); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      background:
+        radial-gradient(circle at 4% 16%, #b1ebff 0 44px, transparent 46px),
+        radial-gradient(circle at 94% 75%, #ffd98b66 0 63px, transparent 65px),
+        linear-gradient(165deg, #def6ff 0%, #f5fcff 59%, #eaf9f2 100%);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
     .page {
-      width: min(440px, calc(100% - 36px));
-      min-height: 100vh; min-height: 100dvh;
+      width: min(420px, calc(100% - 40px));
+      min-height: 100vh;
+      min-height: 100dvh;
       margin: auto;
-      padding: calc(20px + env(safe-area-inset-top)) 0 calc(19px + env(safe-area-inset-bottom));
-      display: flex; flex-direction: column;
+      padding: calc(22px + env(safe-area-inset-top)) 0 calc(18px + env(safe-area-inset-bottom));
+      display: flex;
+      flex-direction: column;
     }
-    .header { display: flex; align-items: center; justify-content: center; gap: 15px; padding-bottom: 22px; border-bottom: 1px solid #333438; }
-    .faces { display: flex; align-items: center; flex: none; padding-left: 12px; }
-    .faces img { width: 53px; height: 53px; object-fit: cover; border-radius: 50%; border: 2px solid #fff; background: #20202a; }
-    .faces img + img { margin-right: -13px; }
-    .heading { min-width: 0; }
-    h1 { font-size: clamp(23px, 6vw, 29px); font-weight: 850; line-height: 1.12; margin: 0; letter-spacing: -.6px; }
-    .heading p { margin: 5px 0 0; color: #b9b9c0; font-size: 13px; }
-    main { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 16px; padding: 30px 0; }
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+      text-align: center;
+    }
+    .faces { display: flex; align-items: center; justify-content: center; padding-left: 12px; }
+    .face {
+      width: 61px;
+      height: 61px;
+      display: grid;
+      place-items: center;
+      border: 3px solid var(--outline);
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 4px 0 #29466324;
+    }
+    .face:first-child { background: #a1e4fd; transform: rotate(-9deg); }
+    .face + .face { background: #ffe49c; margin-right: -11px; transform: rotate(9deg); }
+    .face img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    h1 { font-size: clamp(26px, 7.5vw, 33px); font-weight: 950; line-height: 1.16; letter-spacing: -.8px; margin: 0; }
+    .subtitle { margin: 4px 0 0; color: var(--muted); font-size: 14px; font-weight: 700; }
+    .bubble { position: relative; display: inline-block; }
+    .bubble:after {
+      content: "";
+      position: absolute;
+      left: -19px;
+      top: 4px;
+      width: 11px;
+      height: 11px;
+      background: #ffb951;
+      border-radius: 4px 7px 4px 7px;
+      transform: rotate(20deg);
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: clamp(13px, 2.5dvh, 21px);
+      padding: 26px 0;
+    }
     .game-link {
-      display: flex; align-items: center; justify-content: center;
-      width: 100%; min-height: 68px; padding: 12px 18px;
-      border-radius: 17px; border: 1px solid #f7f7f7;
-      background: #fafafa; color: #111113;
-      text-decoration: none; text-align: center;
-      font-size: clamp(19px, 5.5vw, 24px); line-height: 1.2; font-weight: 850;
-      transition: transform .12s ease, background .12s ease;
+      width: 100%;
+      min-height: clamp(68px, 10.5dvh, 85px);
+      padding: 10px 17px;
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr) 30px;
+      align-items: center;
+      gap: 9px;
+      background: var(--button, #7cddff);
+      color: #22344b;
+      border: 2.5px solid var(--outline);
+      border-radius: 25px;
+      box-shadow: 0 5px 0 var(--outline);
+      text-decoration: none;
+      font-size: clamp(18px, 5vw, 23px);
+      font-weight: 950;
+      line-height: 1.18;
+      text-align: center;
       -webkit-tap-highlight-color: transparent;
+      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
     }
-    .game-link:active { transform: scale(.985); background: #e7e7e7; }
-    .game-link:focus-visible { outline: 3px solid #e6bd73; outline-offset: 4px; }
-    footer { text-align: center; color: #aaaab0; font-size: 13px; font-weight: 600; padding-top: 8px; }
-    @media (max-height: 600px) { .page { padding-top: 12px; padding-bottom: 12px; } .header { padding-bottom: 12px; } .faces img { width: 43px; height: 43px; } main { padding: 14px 0; gap: 11px; } .game-link { min-height: 58px; } }
-    @media (prefers-reduced-motion: reduce) { .game-link { transition: none; } }
+    .game-link:nth-child(1) { --button: #8be4fb; }
+    .game-link:nth-child(2) { --button: #ffe18c; }
+    .game-link:nth-child(3) { --button: #a9eec3; }
+    .game-link:hover { filter: saturate(1.12) brightness(1.02); transform: translateY(-2px); box-shadow: 0 7px 0 var(--outline); }
+    .game-link:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--outline); }
+    .game-link:focus-visible { outline: 3px solid #fe774f; outline-offset: 5px; }
+    .game-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      background: #ffffff9c;
+      font-size: 27px;
+      box-shadow: inset 0 0 0 1px #ffffffb3;
+    }
+    .game-label { min-width: 0; }
+    .arrow {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #fff9;
+      font-size: 21px;
+      line-height: 1;
+      font-weight: 900;
+    }
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #49677b;
+      font-weight: 850;
+      padding-top: 7px;
+    }
+    .footer-heart { color: #f07182; }
+    @media (max-height: 640px) {
+      .page { padding-top: calc(12px + env(safe-area-inset-top)); padding-bottom: calc(10px + env(safe-area-inset-bottom)); }
+      .header { gap: 6px; }
+      .face { width: 46px; height: 46px; }
+      h1 { font-size: 24px; }
+      .subtitle { font-size: 12px; margin-top: 2px; }
+      main { gap: 12px; padding: 15px 0; }
+      .game-link { min-height: 62px; border-radius: 20px; }
+      .game-icon { width: 38px; height: 38px; font-size: 23px; border-radius: 12px; }
+      .game-link { grid-template-columns: 39px minmax(0, 1fr) 28px; font-size: 19px; }
+    }
+    @media (max-width: 350px) {
+      .page { width: calc(100% - 26px); }
+      .game-link { padding: 10px; gap: 6px; font-size: 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .game-link { transition: none; }
+    }
   </style>
 </head>
 <body>
   <div class="page">
     <header class="header">
       <div class="faces" aria-hidden="true">
-        <img src="assets/avi-face.webp" alt="" width="53" height="53">
-        <img src="assets/koko-face.webp" alt="" width="53" height="53">
+        <span class="face"><img src="assets/avi-face.webp" alt="" width="61" height="61"></span>
+        <span class="face"><img src="assets/koko-face.webp" alt="" width="61" height="61"></span>
       </div>
-      <div class="heading">
-        <h1>משחקי המספרה</h1>
-        <p>אבי וקוקו · בוחרים ומשחקים</p>
+      <div>
+        <h1><span class="bubble">משחקי המספרה 🎮</span></h1>
+        <p class="subtitle">אבי וקוקו מזמינים אתכם לשחק!</p>
       </div>
     </header>
+
     <main id="games" aria-label="בחירת משחק">
-      <a class="game-link" href="https://shalevg12.github.io/flappyBarber/">ציפור מספרה</a>
-      <a class="game-link" href="https://shalevg12.github.io/barber-battle/">אבן נייר ומספריים</a>
-      <a class="game-link" href="https://shalevg12.github.io/templeRunMaspera/">טמפל מספרה</a>
+      <a class="game-link" href="https://shalevg12.github.io/flappyBarber/"><span class="game-icon" aria-hidden="true">🐤</span><span class="game-label">ציפור מספרה</span><span class="arrow" aria-hidden="true">←</span></a>
+      <a class="game-link" href="https://shalevg12.github.io/barber-battle/"><span class="game-icon" aria-hidden="true">✌️</span><span class="game-label">אבן נייר ומספריים</span><span class="arrow" aria-hidden="true">←</span></a>
+      <a class="game-link" href="https://shalevg12.github.io/templeRunMaspera/"><span class="game-icon" aria-hidden="true">🏃</span><span class="game-label">טמפל מספרה</span><span class="arrow" aria-hidden="true">←</span></a>
     </main>
-    <footer>העיקר הבריאות והתסרוקת 💈</footer>
+
+    <footer>העיקר הבריאות והתסרוקת <span class="footer-heart">♥</span> 💈</footer>
   </div>
   <script src="games.js"></script>
   <script>
     (() => {
       const games = window.BARBER_GAMES;
       if (!Array.isArray(games) || !games.length) return;
+
       const names = {
         "flappy-barber": "ציפור מספרה",
         "barber-battle": "אבן נייר ומספריים",
         "temple-run-maspera": "טמפל מספרה"
       };
+      const icons = {
+        "flappy-barber": "🐤",
+        "barber-battle": "✌️",
+        "temple-run-maspera": "🏃"
+      };
       const order = ["flappy-barber", "barber-battle", "temple-run-maspera"];
       const ordered = [...games].sort((a, b) => {
-        const aIndex = order.indexOf(a.id);
-        const bIndex = order.indexOf(b.id);
-        return (aIndex < 0 ? order.length : aIndex) - (bIndex < 0 ? order.length : bIndex);
+        const ai = order.indexOf(a.id);
+        const bi = order.indexOf(b.id);
+        return (ai < 0 ? order.length : ai) - (bi < 0 ? order.length : bi);
       });
       const links = ordered
         .filter(game => typeof game.url === "string" && /^https:\/\//.test(game.url))
@@ -86,7 +208,18 @@
           const link = document.createElement("a");
           link.className = "game-link";
           link.href = game.url;
-          link.textContent = names[game.id] || game.name || "משחק";
+          const icon = document.createElement("span");
+          icon.className = "game-icon";
+          icon.setAttribute("aria-hidden", "true");
+          icon.textContent = icons[game.id] || "🎮";
+          const label = document.createElement("span");
+          label.className = "game-label";
+          label.textContent = names[game.id] || game.name || "משחק";
+          const arrow = document.createElement("span");
+          arrow.className = "arrow";
+          arrow.setAttribute("aria-hidden", "true");
+          arrow.textContent = "←";
+          link.append(icon, label, arrow);
           return link;
         });
       if (links.length) document.getElementById("games").replaceChildren(...links);
