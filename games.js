@@ -21,5 +21,16 @@ window.BARBER_GAMES = [
     category: "ריצה • שיאים ואתגרים",
     theme: "run",
     url: "https://shalevg12.github.io/templeRunMaspera/"
+  },
+  {
+    id: "flappy-barber",
+    name: "פלפי ברבר",
+    englishName: "FLAPPY BARBER",
+    label: "מי יעוף הכי רחוק?",
+    symbol: "🪽 💈",
+    description: "בחרו את אבי או קוקו, עופו בין עמודי המספרה ונסו לשבור את השיא!",
+    category: "תעופה • ארקייד",
+    theme: "flappy",
+    url: "https://shalevg12.github.io/flappyBarber/"
   }
 ];
