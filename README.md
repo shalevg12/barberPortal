@@ -10,6 +10,7 @@
 
 - [קרב המספריים — Barber Battle](https://shalevg12.github.io/barber-battle/)
 - [מרוץ המספרה — Temple Run Maspera](https://shalevg12.github.io/templeRunMaspera/)
+- [פלפי ברבר — Flappy Barber](https://shalevg12.github.io/flappyBarber/)
 
 ## הוספת משחק חדש
 
@@ -18,7 +19,7 @@
 - id — מזהה ייחודי
 - name, englishName — שמות להצגה
 - description, category, label, symbol — טקסטים וכיתוב בכרטיס
-- theme — battle או run (אפשר להוסיף עיצובים בעתיד)
+- theme — battle, run או flappy (אפשר להוסיף עיצובים בעתיד)
 - url — הכתובת הציבורית של המשחק
 
 אין צורך לעדכן את קוד ה-QR: הוא תמיד מפנה לפורטל ולא למשחק מסוים.
